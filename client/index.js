@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Link, Route, HashRouter } from 'react-router-dom'
 
-class App extends React.Component {
-    render(){
-        return(
-            <div>
-                <h1>React up and running</h1>
-            </div>
-        )
-    }
-}
+import App from './components/App.js'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <HashRouter>
+     <Route path='/' component={App}/>
+  </HashRouter>,
+  document.getElementById('root'))
+
+
+//rename this file to routes
