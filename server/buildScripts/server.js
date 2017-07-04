@@ -18,10 +18,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/initialWeather', function(req,res ){
-  console.log('test')
   res.send('hit route')
-
-
 });
 
 app.listen(port, function (error) {

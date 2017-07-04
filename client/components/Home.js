@@ -14,19 +14,20 @@ class Home extends Component {
   }
 
   render() {
-    console.log("props", this.props)
     return (
       <div>
         <h3>Weather App</h3>
-        <p onClick={() => {console.log(store.getState())}}>data:{this.props.data}</p>
+        <p>data:{this.props.data}</p>
+        <button onClick={()=>{console.log(store.getState())}}>click me</button>
       </div>
     )
   }
 }
 
 const  mapStateToProps = function(state) {
+  console.log(state)
   return {
-      data: state.data,
+      data: state.fetchWeatherSuccess,     //this should be named data
       hasErrored: state.hasErrored,
       isLoading: state.isLoading
   }

@@ -36,7 +36,7 @@ export function weatherIsLoading(bool) {
 export function fetchWeatherSuccess(data) {
   return {
     type: FETCH_WEATHER_SUCCESS,
-    data
+    data: data
   }
 }
 
@@ -55,15 +55,16 @@ export function fetchInitialWeather() {
 
     axios.get('/initialWeather')
       .then((response) => {
-        console.log('response',response)
-        if(!response.ok) {
+        // Object {data: "hit route", status: 200, statusText: "OK", headers:
+        if(!response.status === 200) {
+          console.log('not ok')
           throw Error(response.statusText)
         }
-        dispatch(itemsIsLoading(false))
+        dispatch(weatherIsLoading(false))
         return response
       })
-    .then((response) => response.json())
-    .then((data) => dispatch(fetchWeatherSuccess(data)))
+    //.then((response) => response.json())
+    .then((data) => { dispatch(fetchWeatherSuccess(data.data))})
     .catch((err)=>(console.log(err)))
     .catch(() => dispatch(weatherHasErrored(true)))
   }

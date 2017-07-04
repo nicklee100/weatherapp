@@ -42,7 +42,6 @@ export function weatherHasErrored(state = false, action) {
 export function fetchWeatherSuccess(state = [], action) {
   switch(action.type) {
     case FETCH_WEATHER_SUCCESS:
-      console.log('reduer', action)
       return action.data
     default:
       return state
