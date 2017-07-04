@@ -1,24 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { fetchInitialWeather } from '../actions/index.js'
+import {store} from './App.js'
+
 
 class Home extends Component {
   constructor(){
     super()
   }
+
+  componentDidMount() {
+    this.props.fetchData()
+  }
+
   render() {
     console.log("props", this.props)
     return (
       <div>
         <h3>Weather App</h3>
+        <p onClick={() => {console.log(store.getState())}}>data:{this.props.data}</p>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+const  mapStateToProps = function(state) {
   return {
-    location: state.location
+      data: state.data,
+      hasErrored: state.hasErrored,
+      isLoading: state.isLoading
   }
 }
 
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = function(dispatch) {
+  return {
+    fetchData: () => dispatch(fetchInitialWeather())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -17,6 +17,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 
+app.get('/initialWeather', function(req,res ){
+  console.log('test')
+  res.send('hit route')
+
+
+});
+
 app.listen(port, function (error) {
   if(error) {
     console.log(error)

@@ -1,7 +1,44 @@
 import axios from 'axios'
 
-export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
 export const FETCH_INITIAL_FORCAST = 'FETCH_INITIAL_FORCAST'
+
+export const GET_LOCATION = 'GET_LOCATION'
+export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
+export const WEATHER_HAS_ERRORED = 'WEATHER_HAS_ERRORED'
+export const WEATHER_IS_LOADING = 'WEATHER_IS_LOADING'
+export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS'
+
+
+export function fetchForcast(forcast) {
+  return {
+    type: FETCH_INITIAL_FORCAST,
+    forcast
+  }
+}
+
+
+////
+///new beloew
+export function weatherHasErrored(bool) {
+  return {
+    type: WEATHER_HAS_ERRORED,
+    hasErrored: bool
+  }
+}
+
+export function weatherIsLoading(bool) {
+  return {
+    type: WEATHER_IS_LOADING,
+    isLoading: bool
+  }
+}
+
+export function fetchWeatherSuccess(data) {
+  return {
+    type: FETCH_WEATHER_SUCCESS,
+    data
+  }
+}
 
 export function fetchLocationSuccess(location) {
   return {
@@ -10,9 +47,24 @@ export function fetchLocationSuccess(location) {
   }
 }
 
-export function fetchForcast(forcast) {
-  return {
-    type: FETCH_INITIAL_FORCAST,
-    forcast
+export function fetchInitialWeather() {
+  return (dispatch) => {
+    dispatch(weatherIsLoading(true))
+
+    //write error message on server
+
+    axios.get('/initialWeather')
+      .then((response) => {
+        console.log('response',response)
+        if(!response.ok) {
+          throw Error(response.statusText)
+        }
+        dispatch(itemsIsLoading(false))
+        return response
+      })
+    .then((response) => response.json())
+    .then((data) => dispatch(fetchWeatherSuccess(data)))
+    .catch((err)=>(console.log(err)))
+    .catch(() => dispatch(weatherHasErrored(true)))
   }
 }
