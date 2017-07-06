@@ -39,7 +39,7 @@ export function weatherHasErrored(state = false, action) {
   }
 }
 
-export function fetchWeatherSuccess(state = [], action) {
+export function fetchWeatherSuccess(state = {}, action) {
   switch(action.type) {
     case FETCH_WEATHER_SUCCESS:
       return action.data

@@ -14,10 +14,17 @@ class Home extends Component {
   }
 
   render() {
+    let data = Object.keys(this.props.data).length === 0 ? [] : Object.keys(this.props.data.current)
     return (
       <div>
-        <h3>Weather App</h3>
-        <p>data:{this.props.data}</p>
+        <h3>All Current Weather App</h3>
+          <ul>
+            {
+              data.map((el) => {
+                return <li key={el}>{`${el}:     ${this.props.data.current[el]}`}</li>
+              })
+            }
+          </ul>
         <button onClick={()=>{console.log(store.getState())}}>click me</button>
       </div>
     )
