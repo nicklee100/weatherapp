@@ -53,7 +53,7 @@ export function fetchInitialWeather() {
 
     //write error message on server
 
-    axios.get('/initialWeather')
+    axios.get('/initialweather')
       .then((response) => {
         // Object {data: "hit route", status: 200, statusText: "OK", headers:
         if(!response.status === 200) {

@@ -2,7 +2,8 @@ import express from 'express';
 import path from 'path';
 import webpack from 'webpack';
 import config from '../../webpack.config.dev';
-
+const initialWeather = require('../routes/index.js')
+console.log('initialWeather:',initialWeather)
 const compiler = webpack(config);
 
 const port = 3000;
@@ -17,9 +18,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 
-app.get('/initialWeather', function(req,res ){
-  res.send('hit route')
-});
+app.use('/initialweather', initialWeather)
+
+
+app.get('/initialweather', function(req,res){
+  res.send('old route')
+})
 
 app.listen(port, function (error) {
   if(error) {
