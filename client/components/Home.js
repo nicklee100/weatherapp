@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchInitialWeather } from '../actions/index.js'
 import {store} from './App.js'
+import Search from './Search.js'
 
 
 class Home extends Component {
@@ -26,6 +27,7 @@ class Home extends Component {
             }
           </ul>
         <button onClick={()=>{console.log(store.getState())}}>click me</button>
+        <Search/>
       </div>
     )
   }
