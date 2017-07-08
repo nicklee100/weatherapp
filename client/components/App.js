@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 
 import Home from './Home.js'
 import Historical from './Historical'
-  import {fetchWeatherSuccess, weatherHasErrored, weatherIsLoading } from '../reducers/'
+import {fetchWeatherSuccess, weatherHasErrored, weatherIsLoading } from '../reducers/'
 
 const rootReducer = combineReducers({ fetchWeatherSuccess, weatherHasErrored, weatherIsLoading })
 
