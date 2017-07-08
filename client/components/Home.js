@@ -21,6 +21,8 @@ class Home extends Component {
     let data = Object.keys(this.props.data).length === 0 ? [] : Object.keys(this.props.data.current)
     return (
       <div>
+        <WeatherBar data = {this.props.data.current}/>
+        <Search/>
         <h3>All Current Weather App</h3>
           <ul>
             {
@@ -30,8 +32,6 @@ class Home extends Component {
             }
           </ul>
         <button onClick={()=>{console.log(store.getState())}}>click me</button>
-        <Search/>
-        <WeatherBar data = {this.props.data.current}/>
       </div>
     )
   }

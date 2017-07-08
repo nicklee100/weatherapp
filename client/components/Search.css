@@ -1,0 +1,40 @@
+.SearchBar {
+  background-color: rgb(238,238,238);
+  text-align: center;
+  padding: 10px;
+}
+
+.SearchBar > form > input {
+  width: 30%;
+  height: 30px;
+  text-align: center;
+  border-radius: 25px;
+  border: none;
+  margin: 5px;
+  font-size: 18px;
+  outline: none;
+}
+
+#findSearch{
+  padding: 12px;
+  margin-right: 5px;
+  background-color: rgb(224,224,224);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#findSearch:hover {
+  background-color: rgb(208,208,208)
+}
+
+#locationSearch{
+  padding: 12px;
+  margin-left: 5px;
+  background-color: rgb(224,224,224);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#locationSearch:hover {
+  background-color: rgb(208,208,208);
+}

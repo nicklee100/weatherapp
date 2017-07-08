@@ -1,22 +1,28 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import './Search.css'
 
 class Search extends Component {
 
-
-  render(){
-
+  render() {
     return (
-      <div>
-        <h4>Search for Location & Date</h4>
-        <button>View Current</button> <br/>
-        <input type="date" id="myDate"/>
-        <div>
-          <p>GeoCoding</p>
-          <input type="text" placeholder='enter location'/>
-        </div>
+      <div className='SearchBar'>
+       <form action="">
+        <a href='#' id="findSearch"> #</a>
+        <input type="text" value='Lowell, MA' />
+          <a href='#' id="locationSearch">O</a>
+        </form>
       </div>
     )
   }
 }
 
-export default Search
+const mapStateToProps = function(state) {
+  return null
+}
+
+const mapDispatchToProps = function(dispatch) {
+  return null
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)
