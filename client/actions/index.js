@@ -69,3 +69,14 @@ export function fetchInitialWeather() {
     .catch(() => dispatch(weatherHasErrored(true)))
   }
 }
+
+export function fetchLocation() {
+  return(dispatch) => {
+    //dispatch locationisloading
+    axios.get('/search/initialLocation')
+      .then((response) => {
+        return response
+      })
+      .then((data)=> {dispatch(fetchLocationSuccess(data))})
+  }
+}

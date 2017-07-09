@@ -18,11 +18,11 @@ class Search extends Component {
 }
 
 const mapStateToProps = function(state) {
-  return null
+  return {}
 }
 
 const mapDispatchToProps = function(dispatch) {
-  return null
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

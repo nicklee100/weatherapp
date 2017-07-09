@@ -3,7 +3,7 @@ import path from 'path';
 import webpack from 'webpack';
 import config from '../../webpack.config.dev';
 const initialWeather = require('../routes/index.js')
-console.log('initialWeather:',initialWeather)
+const search = require('../routes/search.js')
 const compiler = webpack(config);
 
 const port = 3000;
@@ -20,6 +20,7 @@ app.get('/', function (req, res) {
 
 app.use('/initialweather', initialWeather)
 
+app.use('/search', search)
 
 app.get('/initialweather', function(req,res){
   res.send('old route')
