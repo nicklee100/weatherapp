@@ -24,7 +24,6 @@ import {darkSky, googleGeo} from '../secrets.js'
 
 
 router.get('/initiallocation', function(req,res) {
-  console.log('hit route')
   axios.get("http://ipinfo.io")
   .then(({data}) =>{
     res.json({"city":data.city , "state":data.region, "country": data.country})

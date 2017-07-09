@@ -17,7 +17,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log('home render:', this.props.data.current)
     let data = Object.keys(this.props.data).length === 0 ? [] : Object.keys(this.props.data.current)
     return (
       <div>
@@ -31,14 +30,12 @@ class Home extends Component {
               })
             }
           </ul>
-        <button onClick={()=>{console.log(store.getState())}}>click me</button>
       </div>
     )
   }
 }
 
 const  mapStateToProps = function(state) {
-  console.log(state)
   return {
       data: state.fetchWeatherSuccess,     //this should be named data
       hasErrored: state.hasErrored,

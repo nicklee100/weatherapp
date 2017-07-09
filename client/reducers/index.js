@@ -15,7 +15,6 @@ import { FETCH_LOCATION_SUCCESS, WEATHER_HAS_ERRORED, WEAHTER_IS_LOADING, FETCH_
 export function location(state = [], action) {
   switch(action.type) {
     case FETCH_LOCATION_SUCCESS:
-      console.log('in fetch location success case', action)
       return [action.location.data.city, action.location.data.state]
     default:
       return state

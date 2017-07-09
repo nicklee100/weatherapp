@@ -10,7 +10,6 @@ class Search extends Component {
   }
 
   render() {
-    console.log('poop', this.props)
     return (
       <div className='SearchBar'>
        <form action="">
