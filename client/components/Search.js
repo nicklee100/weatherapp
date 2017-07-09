@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Search.css'
+import { fetchLocation } from '../actions/index.js'
 
 class Search extends Component {
 
+  componentDidMount(){
+    this.props.fetchLocation()
+  }
+
   render() {
+    console.log('poop', this.props)
     return (
       <div className='SearchBar'>
        <form action="">
-        <a href='#' id="findSearch"> #</a>
-        <input type="text" value='Lowell, MA' />
+        <a onClick ={ () => {this.props.fetchLocation()}} href='#' id="findSearch"> #</a>
+        <input type="text" value={`${this.props.location} `} />
           <a href='#' id="locationSearch">O</a>
         </form>
       </div>
@@ -18,11 +24,15 @@ class Search extends Component {
 }
 
 const mapStateToProps = function(state) {
-  return {}
+  return {
+    location: state.location
+  }
 }
 
 const mapDispatchToProps = function(dispatch) {
-  return {}
+  return {
+    fetchLocation: () => dispatch(fetchLocation())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

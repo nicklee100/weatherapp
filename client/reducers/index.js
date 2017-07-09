@@ -16,7 +16,7 @@ export function location(state = [], action) {
   switch(action.type) {
     case FETCH_LOCATION_SUCCESS:
       console.log('in fetch location success case', action)
-      return [action.location.lat, action.location.lng]
+      return [action.location.data.city, action.location.data.state]
     default:
       return state
   }

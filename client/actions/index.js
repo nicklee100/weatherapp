@@ -71,10 +71,12 @@ export function fetchInitialWeather() {
 }
 
 export function fetchLocation() {
-  return(dispatch) => {
+  console.log('fetching location')
+  return (dispatch) => {
     //dispatch locationisloading
-    axios.get('/search/initialLocation')
+    axios.get('/search/initiallocation')
       .then((response) => {
+        console.log(response)
         return response
       })
       .then((data)=> {dispatch(fetchLocationSuccess(data))})

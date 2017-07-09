@@ -8,6 +8,7 @@ import {darkSky, googleGeo} from '../secrets.js'
 //add error handeling
 // * note: not sure if google geo location based on wifiaaccess points will work when deployed
 router.get('/', function(req,res ){
+  console.log('---------------------------000000000')
   axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${googleGeo}`, {
     considerIp: "true",
   })
