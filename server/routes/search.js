@@ -3,6 +3,7 @@ const router = express.Router()
 const chalk = require('chalk')
 import axios from 'axios'
 import {darkSky, googleGeo} from '../secrets.js'
+import {returnCoordGoogleGeo} from '../utilities/index.js'
 
 // * not sure if googel geo location weill work based on wifiaccess point
 
@@ -22,12 +23,24 @@ import {darkSky, googleGeo} from '../secrets.js'
 //   }
 // )
 
+//could use html5 api...
 
 router.get('/initiallocation', function(req,res) {
   axios.get("http://ipinfo.io")
-  .then(({data}) =>{
+  .then(({data}) => {
     res.json({"city":data.city , "state":data.region, "country": data.country})
   })
+})
+
+router.post('/location', function(req, res) {
+  axios.get(`http://maps.google.com/maps/api/geocode/json?address=${req.body.location}`)
+    .then(returnCoordGoogleGeo)
+    .then((data) => {
+        return  axios.get(`https://api.darksky.net/forecast/${darkSky}/${data.lat},${data.lng}`)
+    })
+    .then(({data}) => {
+      res.send({'current':data.currently})
+    })
 })
 
 module.exports = router

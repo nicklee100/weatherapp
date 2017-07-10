@@ -7,6 +7,7 @@ export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
 export const WEATHER_HAS_ERRORED = 'WEATHER_HAS_ERRORED'
 export const WEATHER_IS_LOADING = 'WEATHER_IS_LOADING'
 export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS'
+export const SEARCH_LOCATION = "SEARCH_LOCATION"
 
 
 export function fetchForcast(forcast) {
@@ -56,20 +57,21 @@ export function fetchInitialWeather() {
     axios.get('/initialweather')
       .then((response) => {
         // Object {data: "hit route", status: 200, statusText: "OK", headers:
-        if(!response.status === 200) {
+        if (!response.status === 200) {
           console.log('not ok')
           throw Error(response.statusText)
         }
         dispatch(weatherIsLoading(false))
         return response
       })
-    //.then((response) => response.json())
-    .then((data) => { dispatch(fetchWeatherSuccess(data.data))})
-    .catch((err)=>(console.log(err)))
-    .catch(() => dispatch(weatherHasErrored(true)))
+      //.then((response) => response.json())
+      .then((data) => { dispatch(fetchWeatherSuccess(data.data)) })
+      .catch((err) => (console.log(err)))
+      .catch(() => dispatch(weatherHasErrored(true)))
   }
 }
 
+//not working properly
 export function fetchLocation() {
   return (dispatch) => {
     //dispatch locationisloading
@@ -77,6 +79,14 @@ export function fetchLocation() {
       .then((response) => {
         return response
       })
-      .then((data)=> {dispatch(fetchLocationSuccess(data))})
+      .then((data) => { dispatch(fetchLocationSuccess(data)) })
+  }
+}
+
+export function searchLocation(location) {
+  console.log('test',location)
+  return (dispatch) => {
+    axios.post('/search/location', {location})
+      .then((data) => { console.log(data); dispatch(fetchWeatherSuccess(data.data))})
   }
 }

@@ -10,7 +10,7 @@
 //   }
 // }
 
-import { FETCH_LOCATION_SUCCESS, WEATHER_HAS_ERRORED, WEAHTER_IS_LOADING, FETCH_WEATHER_SUCCESS } from '../actions'
+import { FETCH_LOCATION_SUCCESS, WEATHER_HAS_ERRORED, WEAHTER_IS_LOADING, FETCH_WEATHER_SUCCESS, SEARCH_LOCATION } from '../actions'
 
 export function location(state = [], action) {
   switch(action.type) {
