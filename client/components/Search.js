@@ -47,7 +47,6 @@ class Search extends Component {
   handleSubmit() {
     console.log(this.state)
     this.props.searchLocation(this.state.searchInput)
-
   }
 
   handleSearch() {

@@ -55,7 +55,7 @@ export function fetchInitialWeather() {
 
 export function searchLocation(location) {
   return (dispatch) => {
-    axios.post('/search/location', {location})
+    axios.get(`/search/${location}` )
       .then((data) => { console.log(data); dispatch(fetchWeatherSuccess(data.data))})
   }
 }

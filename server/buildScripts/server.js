@@ -28,10 +28,6 @@ app.use('/initialweather', initialWeather)
 
 app.use('/search', search)
 
-app.get('/initialweather', function(req,res){
-  res.send('old route')
-})
-
 app.listen(port, function (error) {
   if(error) {
     console.log(error)
