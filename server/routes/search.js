@@ -26,6 +26,7 @@ import {returnCoordGoogleGeo} from '../utilities/index.js'
 //could use html5 api...
 
 router.get('/initiallocation', function(req,res) {
+  console.log('getting initial location')
   axios.get("http://ipinfo.io")
   .then(({data}) => {
     res.json({"city":data.city , "state":data.region, "country": data.country})

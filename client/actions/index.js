@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const FETCH_INITIAL_FORCAST = 'FETCH_INITIAL_FORCAST'
-
 export const GET_LOCATION = 'GET_LOCATION'
 export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
 export const WEATHER_HAS_ERRORED = 'WEATHER_HAS_ERRORED'
@@ -10,16 +9,6 @@ export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS'
 export const SEARCH_LOCATION = "SEARCH_LOCATION"
 
 
-export function fetchForcast(forcast) {
-  return {
-    type: FETCH_INITIAL_FORCAST,
-    forcast
-  }
-}
-
-
-////
-///new beloew
 export function weatherHasErrored(bool) {
   return {
     type: WEATHER_HAS_ERRORED,
@@ -38,13 +27,6 @@ export function fetchWeatherSuccess(data) {
   return {
     type: FETCH_WEATHER_SUCCESS,
     data: data
-  }
-}
-
-export function fetchLocationSuccess(location) {
-  return {
-    type: FETCH_LOCATION_SUCCESS,
-    location
   }
 }
 
@@ -71,22 +53,38 @@ export function fetchInitialWeather() {
   }
 }
 
-//not working properly
-export function fetchLocation() {
-  return (dispatch) => {
-    //dispatch locationisloading
-    axios.get('/search/initiallocation')
-      .then((response) => {
-        return response
-      })
-      .then((data) => { dispatch(fetchLocationSuccess(data)) })
-  }
-}
-
 export function searchLocation(location) {
-  console.log('test',location)
   return (dispatch) => {
     axios.post('/search/location', {location})
       .then((data) => { console.log(data); dispatch(fetchWeatherSuccess(data.data))})
   }
 }
+
+
+// export function fetchForcast(forcast) {
+//   return {
+//     type: FETCH_INITIAL_FORCAST,
+//     forcast
+//   }
+// }
+
+
+// export function fetchLocationSuccess(location) {
+//   console.log('location:',location)
+//   return {
+//     type: FETCH_LOCATION_SUCCESS,
+//     location
+//   }
+// }
+
+//not working properly
+// export function fetchLocation() {
+//   return (dispatch) => {
+//     //dispatch locationisloading
+//     axios.get('/search/initiallocation')
+//       .then((response) => {
+//         return response
+//       })
+//       .then((data) => { dispatch(fetchLocationSuccess(data)) })
+//   }
+// }
