@@ -20,7 +20,11 @@ router.get('/', function(req,res ){
     //console.dir(data)
     return {'current' : data.data.currently} })
   .then(data => {
-    res.send(data)})
+    res.send(data)
+  })
+  .catch(error => {
+    console.log(error)
+  })
 });
 
 module.exports = router
