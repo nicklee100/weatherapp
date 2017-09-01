@@ -17,12 +17,7 @@ router.get('/:location', function(req, res) {
     })
 })
 
-
-
-
 module.exports = router
-
-
 
 // router.get('/initiallocation', function(req,res) {
 //   console.log('getting initial location')
@@ -31,10 +26,6 @@ module.exports = router
 //     res.json({"city":data.city , "state":data.region, "country": data.country})
 //   })
 // })
-
-
-
-
 
 // * not sure if googel geo location weill work based on wifiaccess point
 
