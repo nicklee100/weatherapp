@@ -17,7 +17,7 @@ export default {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
       { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.svg$/, use: 'file-loader'}
+      { test: /\.(jpg|png|svg)$/, use: 'file-loader'}
     ]
   }
 }

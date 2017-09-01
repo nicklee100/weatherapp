@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Search.css'
 import { fetchInitialWeather, searchLocation } from '../actions/index.js'
+import magnifyingglass from './search.png'
+import currentlocation from './current-location.png'
 
 
 class Search extends Component {
@@ -55,10 +57,15 @@ class Search extends Component {
   render() {
     return (
       <div className='SearchBar'>
-        <form onSubmit={this.handleSubmit}>
-          <a onClick ={this.fetchLocation} href='#' id="findSearch"> #</a>
+        <form id='formBar'onSubmit={this.handleSubmit}>
+
+         <img id='currentLocation' onClick ={this.fetchLocation} href='#'  src={currentlocation} />
+
           <input placeholder={this.props.location} type="text" onChange={this.handleChange} value={ this.state.searchInput } />
-          <a onClick={ this.handleSearch} href='#' id="locationSearch">O</a>
+
+          <img id='locationSearch' href='#'  onClick={ this.handleSearch} src={magnifyingglass} />
+
+          {/* <a onClick={ this.handleSearch} href='#' id="locationSearch"> .</a> */}
         </form>
       </div>
     )
