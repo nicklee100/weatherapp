@@ -5,7 +5,7 @@ import {store} from './App.js'
 import Search from './Search.js'
 import WeatherBar from './WeatherBar.js'
 import './App.css'
-
+import  Map from './Googlemaps'
 
 class Home extends Component {
   constructor(){
@@ -31,6 +31,8 @@ class Home extends Component {
               })
             }
           </ul>
+
+         <Map initialPosition={{lat: 48.858608, lng: 2.294471}}/>
       </div>
     )
   }
