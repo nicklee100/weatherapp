@@ -62,7 +62,7 @@ class Search extends Component {
 
          <img id='currentLocation' onClick ={this.fetchLocation} href='#'  src={currentlocation} />
 
-          <input placeholder={this.props.location} type="text" onChange={this.handleChange} value={ this.state.searchInput } />
+          <input placeholder={`${this.props.location.lat}, ${this.props.location.lng}`} type="text" onChange={this.handleChange} value={ this.state.searchInput } />
 
           <img id='locationSearch' href='#'  onClick={ this.handleSearch} src={magnifyingglass} />
 

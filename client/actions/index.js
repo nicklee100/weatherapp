@@ -9,6 +9,14 @@ export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS'
 export const SEARCH_LOCATION = "SEARCH_LOCATION"
 
 
+export function fetchLocationSuccess(location) {
+  console.log('location:',location)
+  return {
+    type: FETCH_LOCATION_SUCCESS,
+    location
+  }
+}
+
 export function weatherHasErrored(bool) {
   return {
     type: WEATHER_HAS_ERRORED,
@@ -60,6 +68,19 @@ export function searchLocation(location) {
   }
 }
 
+export function getGoogleGeoLocation(){
+  return (dispatch) => {
+    axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs`, {
+      considerIp: "true",
+    })
+    .then( data => {
+      dispatch(fetchLocationSuccess(data.data.location))
+    })
+    .catch((error)=> {
+      console.log(error)
+    })
+  }
+}
 
 // export function fetchForcast(forcast) {
 //   return {
@@ -69,13 +90,7 @@ export function searchLocation(location) {
 // }
 
 
-// export function fetchLocationSuccess(location) {
-//   console.log('location:',location)
-//   return {
-//     type: FETCH_LOCATION_SUCCESS,
-//     location
-//   }
-// }
+
 
 //not working properly
 // export function fetchLocation() {
