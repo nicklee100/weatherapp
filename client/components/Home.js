@@ -10,11 +10,18 @@ import  Map from './Googlemaps'
 class Home extends Component {
   constructor(){
     super()
+    this.state = {
+      location: ''
+    }
   }
 
   componentDidMount() {
     this.props.fetchData()
     this.props.getGoogleGeoLocation()
+  }
+
+  componentDidUpdate(){
+    //console.log('state updated',this.props)
   }
 
   render() {
@@ -32,7 +39,7 @@ class Home extends Component {
             }
           </ul>
 
-         <Map initialPosition={{lat: 48.858608, lng: 2.294471}}/>
+         <Map />
       </div>
     )
   }
@@ -42,7 +49,8 @@ const  mapStateToProps = function(state) {
   return {
       data: state.fetchWeatherSuccess,     //this should be named data
       hasErrored: state.hasErrored,
-      isLoading: state.isLoading
+      isLoading: state.isLoading,
+      Glocation: state.location
   }
 }
 

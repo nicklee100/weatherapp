@@ -10,15 +10,44 @@
 //   }
 // }
 
-import { FETCH_LOCATION_SUCCESS, WEATHER_HAS_ERRORED, WEAHTER_IS_LOADING, FETCH_WEATHER_SUCCESS, SEARCH_LOCATION } from '../actions'
+import {
+  FETCH_LOCATION_SUCCESS,
+  LOCATION_IS_LOADING,
+  LOCATION_HAS_ERRORED,
+  WEATHER_HAS_ERRORED,
+  WEAHTER_IS_LOADING,
+  FETCH_WEATHER_SUCCESS,
+  SEARCH_LOCATION
+} from '../actions'
 
 export function location(state = [], action) {
   switch(action.type) {
     case FETCH_LOCATION_SUCCESS:
-      console.log('action',action)
       return action.location
+
     default:
       return state
+  }
+}
+
+export function locationIsLoading(state = false, action) {
+  switch(action.type) {
+    case LOCATION_IS_LOADING:
+    console.log("LOADINGGGG")
+      return action.locationIsLoading
+
+    default:
+      return state;
+  }
+}
+
+export function locationHasErrored(state = false, action) {
+  switch(action.type) {
+    case LOCATION_HAS_ERRORED:
+      return action.locationHasErrored
+
+    default:
+      return state;
   }
 }
 

@@ -6,9 +6,9 @@ import thunk from 'redux-thunk';
 
 import Home from './Home.js'
 import Historical from './Historical'
-import {fetchWeatherSuccess, weatherHasErrored, weatherIsLoading, location } from '../reducers/'
+import {fetchWeatherSuccess, weatherHasErrored, weatherIsLoading, location, locationHasErrored, locationIsLoading } from '../reducers/'
 
-const rootReducer = combineReducers({ fetchWeatherSuccess, weatherHasErrored, weatherIsLoading,location })
+const rootReducer = combineReducers({ fetchWeatherSuccess, weatherHasErrored, weatherIsLoading,location, locationIsLoading, locationHasErrored })
 
 const store = createStore(rootReducer,  applyMiddleware(thunk) )
 export {store}

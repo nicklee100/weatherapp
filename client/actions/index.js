@@ -2,14 +2,34 @@ import axios from 'axios'
 
 export const FETCH_INITIAL_FORCAST = 'FETCH_INITIAL_FORCAST'
 export const GET_LOCATION = 'GET_LOCATION'
-export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
 export const WEATHER_HAS_ERRORED = 'WEATHER_HAS_ERRORED'
 export const WEATHER_IS_LOADING = 'WEATHER_IS_LOADING'
 export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS'
 export const SEARCH_LOCATION = "SEARCH_LOCATION"
 
+export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
+export const LOCATION_HAS_ERRORED = 'LOCATION_HAS_ERRORED'
+export const LOCATION_IS_LOADING = 'LOCATION_IS_LOADING'
+
+
+export function locationHasErrored(bool) {
+  return {
+    type: LOCATION_HAS_ERRORED,
+    locationHasErrored: bool
+  }
+}
+
+export function locationIsLoading(bool) {
+  console.log('FIRST')
+  return {
+    type: LOCATION_IS_LOADING,
+    locationIsLoading: bool
+  }
+}
 
 export function fetchLocationSuccess(location) {
+  console.log('2nd')
+
   console.log('location:',location)
   return {
     type: FETCH_LOCATION_SUCCESS,
@@ -70,17 +90,27 @@ export function searchLocation(location) {
 
 export function getGoogleGeoLocation(){
   return (dispatch) => {
+    dispatch(locationIsLoading(true))
     axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs`, {
       considerIp: "true",
     })
     .then( data => {
+      console.log('data in thunk', data)
+      dispatch(locationIsLoading(false))
+
       dispatch(fetchLocationSuccess(data.data.location))
     })
     .catch((error)=> {
       console.log(error)
+      dispatch(locationIsLoading(false))
+
+      dispatch(locationHasErrored(true))
     })
   }
 }
+
+
+
 
 // export function fetchForcast(forcast) {
 //   return {
@@ -88,8 +118,6 @@ export function getGoogleGeoLocation(){
 //     forcast
 //   }
 // }
-
-
 
 
 //not working properly
