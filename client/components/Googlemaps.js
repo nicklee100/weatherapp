@@ -22,7 +22,7 @@ class Map extends React.Component {
   componentDidMount() {
     window.initMap = this.initMap;
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs&callback=initMap')
-    this.props.fetchData()
+    this.props.fetchLocation()
   }
 
 
@@ -70,7 +70,7 @@ function loadJS(src) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: (url) => dispatch(getGoogleGeoLocation())
+    fetchLocation: (url) => dispatch(getGoogleGeoLocation())
   };
 };
 
