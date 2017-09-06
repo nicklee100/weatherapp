@@ -18,12 +18,17 @@ class Map extends React.Component {
 
   componentDidUpdate() {
     console.log('Componente Updated', this.props)
-    //loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs&callback=initMap')
+    loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs&callback=initMap')
   }
 
   initMap() {
     //let map = new google.maps.Map(this.refs.maap.getDOMNode(), {  });
-    let map = new google.maps.Map(this.refs.map, { center: { lat: 42.3601, lng: -71.0589 }, zoom: 12 });
+    console.log('empty',this.props.location )
+    if(false ) {
+          let map = new google.maps.Map(this.refs.map, { center: { lat: 36.1699, lng: -115.1398 }, zoom: 12 });
+    } else {
+      let map = new google.maps.Map(this.refs.map, { center: { lat: this.props.location.lat, lng: this.props.location.lng }, zoom: 12 });
+    }
   }
 
   render() {
@@ -36,12 +41,18 @@ class Map extends React.Component {
       return <p>Sorry! There was an error loading the items</p>;
     }
 
-    if (this.props.isLoading === false) {
-        return <p>not Loading…</p>;
+    if (this.props.isLoading) {
+      return (
+        <div>
+            <h4>loading...</h4>
+         <div ref="map" style={mapStyle}></div>
+       </div>
+      );
     } else {
 
       return (
         <div>
+          <h4> finished loading </h4>
          <div ref="map" style={mapStyle}></div>
        </div>
       );

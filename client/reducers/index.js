@@ -24,7 +24,6 @@ export function location(state = [], action) {
   switch(action.type) {
     case FETCH_LOCATION_SUCCESS:
       return action.location
-
     default:
       return state
   }
@@ -33,9 +32,7 @@ export function location(state = [], action) {
 export function locationIsLoading(state = false, action) {
   switch(action.type) {
     case LOCATION_IS_LOADING:
-    console.log("LOADINGGGG")
       return action.locationIsLoading
-
     default:
       return state;
   }
@@ -45,7 +42,6 @@ export function locationHasErrored(state = false, action) {
   switch(action.type) {
     case LOCATION_HAS_ERRORED:
       return action.locationHasErrored
-
     default:
       return state;
   }
