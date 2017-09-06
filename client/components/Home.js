@@ -17,11 +17,10 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.fetchData()
-    this.props.getGoogleGeoLocation()
+     this.props.getGoogleGeoLocation()
   }
 
   componentDidUpdate(){
-    //console.log('state updated',this.props)
   }
 
   render() {

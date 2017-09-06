@@ -1,15 +1,6 @@
 import axios from 'axios'
 
-export const FETCH_INITIAL_FORCAST = 'FETCH_INITIAL_FORCAST'
-export const GET_LOCATION = 'GET_LOCATION'
-export const WEATHER_HAS_ERRORED = 'WEATHER_HAS_ERRORED'
-export const WEATHER_IS_LOADING = 'WEATHER_IS_LOADING'
-export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS'
-export const SEARCH_LOCATION = "SEARCH_LOCATION"
-
-export const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
-export const LOCATION_HAS_ERRORED = 'LOCATION_HAS_ERRORED'
-export const LOCATION_IS_LOADING = 'LOCATION_IS_LOADING'
+ import { FETCH_INITIAL_FORCAST, GET_LOCATION, WEATHER_HAS_ERRORED, WEATHER_IS_LOADING, FETCH_WEATHER_SUCCESS, SEARCH_LOCATION, FETCH_LOCATION_SUCCESS, LOCATION_HAS_ERRORED, LOCATION_IS_LOADING } from './actionTypes.js'
 
 
 export function locationHasErrored(bool) {
@@ -20,7 +11,6 @@ export function locationHasErrored(bool) {
 }
 
 export function locationIsLoading(bool) {
-  console.log('FIRST')
   return {
     type: LOCATION_IS_LOADING,
     locationIsLoading: bool
@@ -28,9 +18,6 @@ export function locationIsLoading(bool) {
 }
 
 export function fetchLocationSuccess(location) {
-  console.log('2nd')
-
-  console.log('location:',location)
   return {
     type: FETCH_LOCATION_SUCCESS,
     location
@@ -61,9 +48,7 @@ export function fetchWeatherSuccess(data) {
 export function fetchInitialWeather() {
   return (dispatch) => {
     dispatch(weatherIsLoading(true))
-
     //write error message on server
-
     axios.get('/initialweather')
       .then((response) => {
         // Object {data: "hit route", status: 200, statusText: "OK", headers:
@@ -84,7 +69,7 @@ export function fetchInitialWeather() {
 export function searchLocation(location) {
   return (dispatch) => {
     axios.get(`/search/${location}` )
-      .then((data) => { console.log(data); dispatch(fetchWeatherSuccess(data.data))})
+      .then((data) => { dispatch(fetchWeatherSuccess(data.data))})
   }
 }
 
@@ -95,9 +80,7 @@ export function getGoogleGeoLocation(){
       considerIp: "true",
     })
     .then( data => {
-      console.log('data in thunk', data)
       dispatch(locationIsLoading(false))
-
       dispatch(fetchLocationSuccess(data.data.location))
     })
     .catch((error)=> {
@@ -108,26 +91,3 @@ export function getGoogleGeoLocation(){
     })
   }
 }
-
-
-
-
-// export function fetchForcast(forcast) {
-//   return {
-//     type: FETCH_INITIAL_FORCAST,
-//     forcast
-//   }
-// }
-
-
-//not working properly
-// export function fetchLocation() {
-//   return (dispatch) => {
-//     //dispatch locationisloading
-//     axios.get('/search/initiallocation')
-//       .then((response) => {
-//         return response
-//       })
-//       .then((data) => { dispatch(fetchLocationSuccess(data)) })
-//   }
-// }

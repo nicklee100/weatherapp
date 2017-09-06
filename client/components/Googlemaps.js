@@ -9,6 +9,16 @@ class Map extends React.Component {
     this.initMap = this.initMap.bind(this)
   }
 
+  initMap() {
+    if(!this.props.location.lat  ) {
+         let map = new google.maps.Map(this.refs.map, { center: { lat: 36.1699, lng: -115.1398 }, zoom: 12 });
+    } else {
+      let lat = parseFloat(this.props.location.lat)
+      let lng = parseFloat(this.props.location.lng)
+      let map = new google.maps.Map(this.refs.map, { center: { lat, lng }, zoom: 12 });
+    }
+ }
+
   componentDidMount() {
     window.initMap = this.initMap;
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs&callback=initMap')
@@ -17,26 +27,16 @@ class Map extends React.Component {
 
 
   componentDidUpdate() {
-    console.log('Componente Updated', this.props)
     loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs&callback=initMap')
   }
 
-  initMap() {
-    //let map = new google.maps.Map(this.refs.maap.getDOMNode(), {  });
-    console.log('empty',this.props.location )
-    if(false ) {
-          let map = new google.maps.Map(this.refs.map, { center: { lat: 36.1699, lng: -115.1398 }, zoom: 12 });
-    } else {
-      let map = new google.maps.Map(this.refs.map, { center: { lat: this.props.location.lat, lng: this.props.location.lng }, zoom: 12 });
-    }
-  }
+
 
   render() {
     const mapStyle = {
       width: 500,
       height: 300,
     };
-    console.log('7777', this.props)
     if (this.props.hasErrored) {
       return <p>Sorry! There was an error loading the items</p>;
     }

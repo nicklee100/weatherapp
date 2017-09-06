@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 
 class TimeMachine extends Component {
-
-
   render(){
-
     return (
       <div>
         <h4>Search for Location & Date</h4>

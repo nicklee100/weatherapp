@@ -9,6 +9,3 @@ ReactDOM.render(
      <Route path='/' component={App}/>
   </HashRouter>,
   document.getElementById('root'))
-
-
-//rename this file to routes

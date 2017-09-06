@@ -1,14 +1,3 @@
-// import { FETCH_LOCATION_SUCCESS } from '../actions'
-
-// export function location(state = ['123','456'], action) {
-//   switch(action.type) {
-//     case FETCH_LOCATION_SUCCESS:
-//       console.log('in fetch location success case')
-//       return [action.location.lat, action.location.lng]
-//     default:
-//       return state
-//   }
-// }
 
 import {
   FETCH_LOCATION_SUCCESS,
@@ -18,7 +7,7 @@ import {
   WEAHTER_IS_LOADING,
   FETCH_WEATHER_SUCCESS,
   SEARCH_LOCATION
-} from '../actions'
+} from '../actions/actionTypes.js'
 
 export function location(state = [], action) {
   switch(action.type) {
