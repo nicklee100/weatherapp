@@ -45,6 +45,25 @@ export function fetchWeatherSuccess(data) {
   }
 }
 
+
+export function fetchWeather(coordinates) {
+  return (dispatch) => {
+    dispatch(weatherIsLoading(true))
+    axios.get(`/initialweather/weather/${coordinates.lat}/${coordinates.lng}`)
+      .then((response) => {
+        if (!response.status === 200) {
+          console.log('not ok')
+          throw Error(response.statusText)
+        }
+        dispatch(weatherIsLoading(false))
+        return response
+      })
+      .then((data) => { dispatch(fetchWeatherSuccess(data.data)) })
+      .catch((err) => (console.log(err)))
+      .catch(() => dispatch(weatherHasErrored(true)))
+  }
+}
+
 export function fetchInitialWeather() {
   return (dispatch) => {
     dispatch(weatherIsLoading(true))

@@ -68,17 +68,18 @@ function loadJS(src) {
   ref.parentNode.insertBefore(script, ref);
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchLocation: (url) => dispatch(getGoogleGeoLocation())
-  };
-};
 
 const mapStateToProps = (state) => {
   return {
     location: state.location,
     hasErrored: state.locationHasErrored,
     isLoading: state.locationIsLoading
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchLocation: (url) => dispatch(getGoogleGeoLocation())
   };
 };
 
