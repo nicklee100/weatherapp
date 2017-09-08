@@ -34,8 +34,8 @@ class Map extends React.Component {
 
   render() {
     const mapStyle = {
-      width: 500,
-      height: 300,
+      width: 1000,
+      height: 500,
     };
     if (this.props.hasErrored) {
       return <p>Sorry! There was an error loading the items</p>;

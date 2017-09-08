@@ -37,7 +37,6 @@ class Search extends Component {
 
   showPosition(position) {
     console.log(position.coords)
-
   }
 
   fetchLocation(){
@@ -54,7 +53,6 @@ class Search extends Component {
     this.props.searchLocation(this.state.searchInput)
   }
 
-
   render() {
     return (
       <div className='SearchBar'>
@@ -66,7 +64,6 @@ class Search extends Component {
 
           <img id='locationSearch' href='#'  onClick={ this.handleSearch} src={magnifyingglass} />
 
-          {/* <a onClick={ this.handleSearch} href='#' id="locationSearch"> .</a> */}
         </form>
       </div>
     )
