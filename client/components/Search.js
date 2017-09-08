@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Search.css'
-import { fetchInitialWeather, searchLocation, getInitialWeather, getGoogleGeoLocation } from '../actions/index.js'
+import { searchLocation, getInitialWeather, getGoogleGeoLocation } from '../actions/index.js'
 import magnifyingglass from './search.png'
 import currentlocation from './current-location.png'
 

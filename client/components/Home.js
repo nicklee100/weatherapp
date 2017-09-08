@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchInitialWeather, getGoogleGeoLocation, fetchWeather, getInitialWeather } from '../actions/index.js'
+import { getGoogleGeoLocation, fetchWeather, getInitialWeather } from '../actions/index.js'
 import {store} from './App.js'
 import Search from './Search.js'
 import WeatherBar from './WeatherBar.js'

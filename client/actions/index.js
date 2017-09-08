@@ -64,26 +64,6 @@ export function fetchWeather(coordinates) {
   }
 }
 
-export function fetchInitialWeather() {
-  return (dispatch) => {
-    dispatch(weatherIsLoading(true))
-    //write error message on server
-    axios.get('/initialweather')
-      .then((response) => {
-        // Object {data: "hit route", status: 200, statusText: "OK", headers:
-        if (!response.status === 200) {
-          console.log('not ok')
-          throw Error(response.statusText)
-        }
-        dispatch(weatherIsLoading(false))
-        return response
-      })
-      //.then((response) => response.json())
-      .then((data) => { dispatch(fetchWeatherSuccess(data.data)) })
-      .catch((err) => (console.log(err)))
-      .catch(() => dispatch(weatherHasErrored(true)))
-  }
-}
 
 export function searchLocation(location) {
   return (dispatch) => {
