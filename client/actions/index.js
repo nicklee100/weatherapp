@@ -110,3 +110,16 @@ export function getGoogleGeoLocation(){
     })
   }
 }
+
+
+export function getInitialWeather() {
+  const request = axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAvn1WOC1uXO7jw820pYZsSzZUNh5g7cTs`, {
+    considerIp: "true",
+  })
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch(fetchWeather(data.location))
+    });
+  };
+}

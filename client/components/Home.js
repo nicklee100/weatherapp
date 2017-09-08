@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchInitialWeather, getGoogleGeoLocation, fetchWeather } from '../actions/index.js'
+import { fetchInitialWeather, getGoogleGeoLocation, fetchWeather, getInitialWeather } from '../actions/index.js'
 import {store} from './App.js'
 import Search from './Search.js'
 import WeatherBar from './WeatherBar.js'
@@ -16,12 +16,20 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchData()
-     this.props.getGoogleGeoLocation()
+    //this.props.fetchData()
+    this.props.getInitial()
+    //this.props.getGoogleGeoLocation()
+
   }
 
   componentDidUpdate(){
   }
+
+  // getLocation(){
+  //   new Promise(function(resolve, reject) {
+  //     this.props.fetchData()
+  //   return this.state.location
+  // })}
 
   render() {
     let data = Object.keys(this.props.data).length === 0 ? [] : Object.keys(this.props.data.current)
@@ -58,7 +66,8 @@ const mapDispatchToProps = function(dispatch) {
   return {
     fetchData: () => dispatch(fetchInitialWeather()),
     getGoogleGeoLocation: () => dispatch(getGoogleGeoLocation()),
-    fetchWeather: () => dispatch(fetchWeather({lat:29.9511, lng:90.0715 }))
+    fetchWeather: () => dispatch(fetchWeather({lat:29.9511, lng:90.0715 })),
+    getInitial: () => dispatch(getInitialWeather())
   }
 }
 
