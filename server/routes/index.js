@@ -28,10 +28,8 @@ router.get('/', function(req,res ){
 });
 
 router.get('/weather/:lat/:lng', function(req,res){
-  console.log('on server', req.params)
   axios.get(`https://api.darksky.net/forecast/${darkSky}/${req.params.lat},${req.params.lng}`)
   .then(data => {
-    //console.dir(data)
     return {'current' : data.data.currently} })
   .then(data => {
     res.send(data)

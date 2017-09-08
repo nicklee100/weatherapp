@@ -13,7 +13,7 @@ router.get('/:location', function(req, res) {
         return  axios.get(`https://api.darksky.net/forecast/${darkSky}/${data.lat},${data.lng}`)
     })
     .then(({data}) => {
-      res.send({'current':data.currently})
+      res.send({'current':data.currently,coordinates:{lat:data.latitude,lng:data.longitude}})
     })
 })
 

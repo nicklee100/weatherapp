@@ -31,7 +31,6 @@ class Map extends React.Component {
   }
 
 
-
   render() {
     const mapStyle = {
       width: 1000,

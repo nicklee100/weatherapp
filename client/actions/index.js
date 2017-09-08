@@ -88,7 +88,12 @@ export function fetchInitialWeather() {
 export function searchLocation(location) {
   return (dispatch) => {
     axios.get(`/search/${location}` )
-      .then((data) => { console.log('test',data); dispatch(fetchWeatherSuccess(data.data))})
+      .then(({data}) => {
+        console.log('test',data);
+        dispatch(fetchWeatherSuccess(data))
+        dispatch(fetchLocationSuccess(data.coordinates))
+
+      })
   }
 }
 

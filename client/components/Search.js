@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Search.css'
-import { fetchInitialWeather, searchLocation } from '../actions/index.js'
+import { fetchInitialWeather, searchLocation, getInitialWeather, getGoogleGeoLocation } from '../actions/index.js'
 import magnifyingglass from './search.png'
 import currentlocation from './current-location.png'
 
@@ -41,11 +41,14 @@ class Search extends Component {
 
   fetchLocation(){
     this.props.fetchLocation()
+    this.props.getGoogleGeoLocation()
   }
 
   handleSubmit() {
     console.log(this.state)
     this.props.searchLocation(this.state.searchInput)
+    this.setState({searchInput: ' '})
+
   }
 
   handleSearch() {
@@ -60,7 +63,7 @@ class Search extends Component {
 
          <img id='currentLocation' onClick ={this.fetchLocation} href='#'  src={currentlocation} />
 
-          <input placeholder={`${this.props.location.lat}, ${this.props.location.lng}`} type="text" onChange={this.handleChange} value={ this.state.searchInput } />
+          <input  type="text" onChange={this.handleChange} value={ this.state.searchInput } />
 
           <img id='locationSearch' href='#'  onClick={ this.handleSearch} src={magnifyingglass} />
 
@@ -78,8 +81,9 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    fetchLocation: () => dispatch(fetchInitialWeather()),
-    searchLocation: (data) => dispatch(searchLocation(data))
+    fetchLocation: () => dispatch(getInitialWeather()),
+    searchLocation: (data) => dispatch(searchLocation(data)),
+    getGoogleGeoLocation: () => dispatch(getGoogleGeoLocation())
   }
 }
 
