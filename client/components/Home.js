@@ -22,9 +22,10 @@ class Home extends Component {
   render() {
 
     return (
-      <div>
-        <WeatherBar data = {this.props.data.current}/>
+      <div id='homeContainer'>
         <Search/>
+        <WeatherBar data = {this.props.data.current}/>
+
          <Map/>
       </div>
     )

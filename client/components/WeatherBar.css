@@ -2,7 +2,6 @@
     list-style: none;
     display: flex;
     text-align: center;
-    background-color:rgb(248, 248, 248);
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -12,7 +11,13 @@
 .weatherBar > ul > li {
   margin:  auto;
 }
+
 .label {
   font-weight: 600;
 }
 
+.weatherBar {
+  width: 75%;
+  z-index: 3;
+  margin: 0 auto;
+}

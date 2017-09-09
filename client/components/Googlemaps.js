@@ -50,10 +50,7 @@ class Map extends React.Component {
     } else {
 
       return (
-        <div>
-          <h4> finished loading </h4>
-         <div ref="map" style={mapStyle}></div>
-       </div>
+          <div id='map' ref="map"></div>
       );
     }
   }

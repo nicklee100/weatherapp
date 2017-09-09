@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div>
+        <div id='appContainer'>
           <Route exact path='/' component ={Home}/>
           <Route path='/history' component = { Historical } />
         </div>

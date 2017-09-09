@@ -26,7 +26,6 @@ app.get('/', function (req, res) {
 
 app.use('/initialweather', initialWeather)
 
-
 app.use('/search', search)
 
 app.listen(port, function (error) {
